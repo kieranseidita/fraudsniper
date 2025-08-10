@@ -178,37 +178,37 @@ import requests
 import json
 
 # THis is our Splunk HEC(HTTP Event Collectior) settings
-SPLUNK_HEC_URL = "https://127.0.0.1:8088/services/collector"
-SPLUNK_TOKEN = "0d5acc53-7402-4815-a6a9-02442afb459b"
+#SPLUNK_HEC_URL = ""
+#SPLUNK_TOKEN = ""
 
 #This is our fucntion to send data to Splunk HEC
 #We will create a batch size to send our data in chunks
 #This is useful for large datasets to avoid overwhelming the server
-def send_to_splunk(events, token=SPLUNK_TOKEN, batch_size=1000):
+#def send_to_splunk(events, token=SPLUNK_TOKEN, batch_size=1000):
     #This creates a HTTP header and authenticates requests to Splunk with your token
-    headers  = {
-        "Authorization": f"Splunk {token}"
-    }
+    #headers  = {
+    #    "Authorization": f"Splunk {token}"
+    #}
     #We will now show the total number of events we are sending to Splunk
-    total_events = len(events)
-    num_batches = (total_events // batch_size) + (1 if total_events % batch_size != 0 else 0)
+    #total_events = len(events)
+    #num_batches = (total_events // batch_size) + (1 if total_events % batch_size != 0 else 0)
 
     #We will show progress text and bar for our batches being sent to Splunk
-    progress_text = "Sending flagged anomalies to Splunk"
-    progress_bar = st.progress(0, text=progress_text)
+    #progress_text = "Sending flagged anomalies to Splunk"
+    #progress_bar = st.progress(0, text=progress_text)
 
     #We will now iterate through our events in batches
-    for i in range(num_batches):
-        batch = events[i * batch_size:(i + 1) * batch_size]
+    #for i in range(num_batches):
+        #batch = events[i * batch_size:(i + 1) * batch_size]
         #This is the actual data we are sending to Splunk
         # This event is a dictionary that contains our data
         # Tells Splunk that we are sending JSON data
-        payload = ""
-        for event in batch:
-            payload += json.dumps({
-             "event": event,
-             "sourcetype": "_json",
-             }) + "\n"
+        #payload = ""
+        #for event in batch:
+            #payload += json.dumps({
+             #"event": event,
+             #"sourcetype": "_json",
+             #}) + "\n"
 
         # We are making a POST(Posting data to a server) request to the HTTP Event Collector endpoint
         #verify=False is used to skip SSL certification verification - used with self signed certs
@@ -231,34 +231,34 @@ def send_to_splunk(events, token=SPLUNK_TOKEN, batch_size=1000):
 
 # Now we are going to send our flagged anomalies to Splunk
 # We will iterate through each row in the filtered DataFrame
-if flagged_anomalies:
-  if st.sidebar.button("Send Flagged Anomalies to Splunk"):
+#if flagged_anomalies:
+  #if st.sidebar.button("Send Flagged Anomalies to Splunk"):
     # Create an array to hold our events
-    events_to_send = []
-    for _, row in filtered_df.iterrows():
-        try:
+    #events_to_send = []
+    #for _, row in filtered_df.iterrows():
+        #try:
             # Builds a dictionary for each row with the timestamp
             # We will clean each row before sending and convert
             # This is to prevent so that no NaNs or None's get into the JSON
-            event = {
-                "timestamp": str(row['Time']) if pd.notna(row['Time']) else "unknown",
-                "risk_score": float(row['risk_score']) if pd.notna(row['risk_score']) else 0.0,
-                "severity": str(row['Severity']) if pd.notna(row['Severity']) else "N/A",
-                "amount": float(row['Amount']) if pd.notna(row['Amount']) else 0.0,
-                "splunk_rule": str(row['SplunkRuleTriggered']) if pd.notna(row['SplunkRuleTriggered']) else "None"
-            }
+            #event = {
+                #"timestamp": str(row['Time']) if pd.notna(row['Time']) else "unknown",
+                #"risk_score": float(row['risk_score']) if pd.notna(row['risk_score']) else 0.0,
+                #"severity": str(row['Severity']) if pd.notna(row['Severity']) else "N/A",
+                #"amount": float(row['Amount']) if pd.notna(row['Amount']) else 0.0,
+                #"splunk_rule": str(row['SplunkRuleTriggered']) if pd.notna(row['SplunkRuleTriggered']) else "None"
+            #}
             # We will append each event to our events array
-            events_to_send.append(event)
-        except Exception as e:
+            #events_to_send.append(event)
+        #except Exception as e:
             # Skip rows that cause issues and notify the user
-            st.warning(f"Skipping malformed row due to error: {e}")
+            #st.warning(f"Skipping malformed row due to error: {e}")
     
     # Now we will send our events to Splunk in batches
-    send_to_splunk(events_to_send)
+    #send_to_splunk(events_to_send)
 
 
 # This displays our filtered table where we can display our fraud anomalies
-st.dataframe(filtered_df)
+#st.dataframe(filtered_df)
 
 # Now we are going to create our styling function for row highlighting
 def highlight_rows(row):
