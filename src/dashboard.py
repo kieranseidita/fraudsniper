@@ -212,20 +212,20 @@ import json
 
         # We are making a POST(Posting data to a server) request to the HTTP Event Collector endpoint
         #verify=False is used to skip SSL certification verification - used with self signed certs
-        try:
-            response = requests.post(SPLUNK_HEC_URL, headers=headers, data=payload, verify=False)
+        #try:
+            #response = requests.post(SPLUNK_HEC_URL, headers=headers, data=payload, verify=False)
             #Check if our response is successful
-            if response.status_code != 200:
-                st.warning(f"Batch {i+1}/{num_batches} failed: {response.status_code} - {response.text}")
+            #if response.status_code != 200:
+                #st.warning(f"Batch {i+1}/{num_batches} failed: {response.status_code} - {response.text}")
         #Catch any exceptions that occur during our request
-        except Exception as e:
-            st.error(f"Batch {i+1}/{num_batches} failed: {e}")
+        #except Exception as e:
+            #st.error(f"Batch {i+1}/{num_batches} failed: {e}")
          
         # Update the progress bar
-        progress_bar.progress((i + 1) / num_batches, text=progress_text)
+        #progress_bar.progress((i + 1) / num_batches, text=progress_text)
 
     #We will show a success message that our data was sent to Splunk
-    st.success("Data successfully sent to Splunk")
+    #st.success("Data successfully sent to Splunk")
 
 
 
