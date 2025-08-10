@@ -37,16 +37,15 @@ import plotly.graph_objects as go
 
 # os.getcwd() - this is the method for getting current working directory
 
-model_path = os.path.join(os.getcwd(), 'fraud_detection.pkl')
+# Path relative to the current file's location
+model_path = os.path.join(os.path.dirname(__file__), 'fraud_detection.pkl')
 
-# We need to check to see if the file exists before loading
 if os.path.exists(model_path):
-    # We will use the with open path then
     with open(model_path, 'rb') as file:
         model = pickle.load(file)
     st.success('Our model is successfully loaded')
 else:
-    st.error('Our model doesnt exist')
+    st.error(f'Model not found at {model_path}')
     st.stop()
 
 # Now we are going to get our data from our machine learning pipeline
