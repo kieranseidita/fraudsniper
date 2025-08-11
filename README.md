@@ -26,6 +26,15 @@ Built with **Isolation Forest** for anomaly detection, **Streamlit** for interac
 - **AWS Lambda** — Optional serverless deployment  
 - **Splunk HEC** — Optional log ingestion  
 
+## 📸 Screenshots / Demo  
+*(Add your own GIFs or images here to make the repo pop)*  
+
+Example placeholders:  
+[Dashboard Overview](Dashboard.png)  
+[Anomaly Detection View](AnomalyDetection.png)  
+[Severity Scoring Chart](SeverityScore.png)  
+
+
 ---
 
 ## 📂 Project Structure  
@@ -58,14 +67,6 @@ pip install -r requirements.txt
 Run the dashboard locally:  
 ```bash
 streamlit run src/dashboard.py
-
-## 📸 Screenshots / Demo  
-*(Add your own GIFs or images here to make the repo pop)*  
-
-Example placeholders:  
-![Dashboard Overview](Dashboard.png)  
-![Anomaly Detection View](Anomaly Detection.png)  
-![Severity Scoring Chart](Severity Score.png)  
 
  ## 🔒 Security Note  
 - Splunk integration is commented out by default to prevent credential leaks.  
