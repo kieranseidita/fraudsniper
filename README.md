@@ -31,8 +31,8 @@ Built with **Isolation Forest** for anomaly detection, **Streamlit** for interac
 
 Example placeholders:  
 [Dashboard Overview](Dashboard.png)  
-[Anomaly Detection View](Anomaly Detection.png)  
-[Severity Scoring Chart](Severity Score.png)  
+[Anomaly Detection View](AnomalyDetection.png)  
+[Severity Scoring Chart](SeverityScore.png)  
 
 
 ---
