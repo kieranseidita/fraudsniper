@@ -59,7 +59,22 @@ Run the dashboard locally:
 ```bash
 streamlit run src/dashboard.py
 
+## 📸 Screenshots / Demo  
+*(Add your own GIFs or images here to make the repo pop)*  
+
+Example placeholders:  
+![Dashboard Overview](docs/images/dashboard_example.pn)  
+![Anomaly Detection View](docs/images/anomaly_detection.png)  
+![Severity Scoring Chart](docs/images/severity_scoring.png)  
+
  ## 🔒 Security Note  
 - Splunk integration is commented out by default to prevent credential leaks.  
 - If enabling, store tokens in **environment variables** or a **secrets manager** — never in plain code.  
 
+## 📸 Screenshots / Demo  
+*(Add your own GIFs or images here to make the repo pop)*  
+
+Example placeholders:  
+![Dashboard Overview]()  
+![Anomaly Detection View]()  
+![Severity Scoring Chart]()  
